@@ -2,7 +2,6 @@ export interface Person {
   name: string;
   age: number;
 }
-
 export interface IStudent extends Person {
   group: string;
   budget: string;
@@ -16,5 +15,4 @@ export interface IGroup {
   course: number;
   semester: number;
   degree: "bachelor" | "master";
-  // students: IStudent[];
 }

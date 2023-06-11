@@ -1,7 +1,9 @@
 import { IGroup, IStudent } from "../interfaces/interfaces";
 import { Role } from "../enums/enums";
-import { Employee, TSubjects } from "../types/types";
-
+import { Employee, TSubjects, Tdegrees } from "../types/types";
+import { DegreeToAgeValidation } from "../decorators/DegreeToAgeValidation";
+import { CheckSalary } from "../decorators/CheckSalary";
+import { TeacherDetails } from "../decorators/TeacherDetails";
 abstract class EmployeeBase implements Employee {
   private _salary: number;
 
@@ -13,6 +15,7 @@ abstract class EmployeeBase implements Employee {
     return this._salary;
   }
 
+  @CheckSalary
   set salary(value: number) {
     this._salary = value;
   }
@@ -20,10 +23,12 @@ abstract class EmployeeBase implements Employee {
   abstract addToSalary(bonus: number): void;
 }
 
+@TeacherDetails
 export class Teacher extends EmployeeBase {
-  degree: string;
+  @DegreeToAgeValidation
+  degree: Tdegrees;
   public subjects: Array<TSubjects>;
-  constructor(name: string, age: number, degree: string) {
+  constructor(name: string, age: number, degree: Tdegrees) {
     super(name, age, Role.Teacher);
     this.degree = degree;
     this.subjects = [];

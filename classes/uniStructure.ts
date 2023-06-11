@@ -1,13 +1,16 @@
 import { IGroup, IStudent } from "../interfaces/interfaces";
 import { Role } from "../enums/enums";
 import { Employee, TSubjects } from "../types/types";
+import { IsEmpty } from "../decorators/IsEmpty";
 
-export class University {
+// Generics ?
+export class University<T extends IGroup> {
   private _employees: Array<string> = [];
   private _faculties: Array<string> = [];
 
   constructor(public name: string) {}
 
+  @IsEmpty
   get employees(): Array<string> {
     return this._employees;
   }
@@ -20,6 +23,7 @@ export class University {
     this._employees = this._employees.filter((item) => item != employee);
   }
 
+  @IsEmpty
   get faculties(): Array<string> {
     return this._faculties;
   }
@@ -37,13 +41,13 @@ export class Faculty {
   private _groups: IGroup[] = [];
   constructor(public name: string) {}
 
-  addGroup(group: IGroup): void {
-    this._groups.push(group);
-    console.log("group added");
-  }
-
+  @IsEmpty
   get groups(): IGroup[] {
     return this._groups;
+  }
+
+  addGroup(group: IGroup): void {
+    this._groups.push(group);
   }
 
   removeGroup(group: IGroup): void {
@@ -69,7 +73,6 @@ export class Group implements IGroup {
 
   addStudent(student: IStudent): void {
     this.students.push(student);
-    console.log("student added");
     student.group = this.name;
   }
 

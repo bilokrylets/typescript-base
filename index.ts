@@ -240,14 +240,18 @@ import { Student } from "./classes/student";
 
 // console.log(student1);
 
-const teacher1 = new Teacher("teacher_1_name", 33, "master");
-const teacher2 = new Teacher("teacher_2_name", 55, "Ph.D");
+const teacher1 = new Teacher("teacher_1_name", 25, "M.S. (Master of Science)");
+const teacher2 = new Teacher("teacher_2_name", 25, "B.S. (Bachelor of Science)");
+
+//DegreeToAgeValidation decorator will throw error
+// const teacher3 = new Teacher("teacher_2_name", 14, "B.S. (Bachelor of Science)");
+
 const rector = new Management("management_1_name", 45, "rector");
 const cleaner1 = new Cleaner("cleaner_1_name", 38);
 const security = new Other("security_1_name", 41, "security");
 const doctor = new Other("doctor_1_name", 51, "doctor");
 
-const university1 = new University("Chernihiv Polytechnic National University");
+const university1 = new University<IGroup>("Chernihiv Polytechnic National University");
 const faculty1 = new Faculty("Information technologies");
 const faculty2 = new Faculty("Law faculty");
 const group1 = new Group("123:computer science", 4, 2, "bachelor");
@@ -255,6 +259,11 @@ const group2 = new Group("121:computer engineering", 1, 2, "master");
 
 const student1 = new Student("student_1_name", 20, "budget");
 const student2 = new Student("student_2_name", 19, "contract");
+
+// console.log(faculty1.groups); // getdecorator IsEmpty clg: RESULT IS EMPTY:
+// console.log(university1.employees);
+// console.log(university1.faculties);
+// console.log(university1);
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -265,6 +274,7 @@ teacher1.deleteSubject("Biology");
 teacher1.addToSalary(500);
 teacher1.updateSalary();
 
+// teacher1.addToSalary(-5000); //setdecorator CheckSalary clg: SALARY HAS NOT CHANGED: Salary must be greater than 4000.
 // console.log(teacher1);
 // console.log("-----------------------------------------------");
 
@@ -304,6 +314,6 @@ group1.addStudent(student2);
 
 teacher1.setMark(student1, "Computer Science", 100);
 teacher1.setMark(student1, "Mathematics", 60);
-teacher1.setMark(student1, "Medicine", 30); //does not teach, will not be added
 
-console.log(student1);
+// teacher1.setMark(student1, "Medicine", 30); //teacher does not teach, will not be added + clg
+// console.log(student1);
