@@ -240,6 +240,14 @@ import { Student } from "./classes/student";
 
 // console.log(student1);
 
+function whoIs(person: IStudent | Employee): void {
+  if ("id" in person) {
+    console.log("this is student");
+  } else {
+    console.log("this is employee");
+  }
+}
+
 const teacher1 = new Teacher("teacher_1_name", 25, "M.S. (Master of Science)");
 const teacher2 = new Teacher("teacher_2_name", 25, "B.S. (Bachelor of Science)");
 
@@ -312,8 +320,15 @@ group1.addStudent(student2);
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-teacher1.setMark(student1, "Computer Science", 100);
+teacher1.setMark(student1, "Computer Science", 80);
 teacher1.setMark(student1, "Mathematics", 60);
+// student1.changeBudget();
 
 // teacher1.setMark(student1, "Medicine", 30); //teacher does not teach, will not be added + clg
+
 // console.log(student1);
+
+///////////////////////////////////////////////////////////////////////////////////
+
+whoIs(student1);
+whoIs(doctor);
