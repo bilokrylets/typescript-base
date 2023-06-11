@@ -57,6 +57,7 @@ export class Teacher extends EmployeeBase {
       console.log(`${this.name} does not teach ${subject}`);
     }
   }
+
   addToSalary(bonus: number): void {
     this.salary = this.salary + bonus;
   }

@@ -3,7 +3,6 @@ import { Role } from "../enums/enums";
 import { Employee, TSubjects } from "../types/types";
 import { IsEmpty } from "../decorators/IsEmpty";
 
-// Generics ?
 export class University<T extends IGroup> {
   private _employees: Array<string> = [];
   private _faculties: Array<string> = [];
